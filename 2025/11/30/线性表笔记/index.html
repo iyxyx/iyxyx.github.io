@@ -6,12 +6,12 @@
   
   <title>线性表(顺序表)笔记 | iyxyx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="一、线性表定义：线性表是具有相同数据类型的n个数据元素的有限序列。序列：元素之间有序，中间元素都有且仅有一个直接前驱和一个直接后继。当一个线性表中没有元素(长度为0)时，称为空表；表的起始位置称为表头，表的结束位置称为表尾。 二、顺序表用连续的存储空间(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。 三、结构定义以及初始化1234typedef struct &#123;">
+  <meta name="description" content="一、线性表 定义：线性表是具有相同数据类型的n个数据元素的有限序列。 序列：元素之间有序，中间元素都有且仅有一个直接前驱和一个直接后继。 当一个线性表中没有元素(长度为0)时，称为空表；表的起始位置称为表头，表的结束位置称为表尾。 ## 二、顺序表 用连续的存储空间(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。 ### 三、结构定义以及初始化 1234typede">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性表(顺序表)笔记">
 <meta property="og:url" content="https://iyxyx.github.io/2025/11/30/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="iyxyx的博客">
-<meta property="og:description" content="一、线性表定义：线性表是具有相同数据类型的n个数据元素的有限序列。序列：元素之间有序，中间元素都有且仅有一个直接前驱和一个直接后继。当一个线性表中没有元素(长度为0)时，称为空表；表的起始位置称为表头，表的结束位置称为表尾。 二、顺序表用连续的存储空间(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。 三、结构定义以及初始化1234typedef struct &#123;">
+<meta property="og:description" content="一、线性表 定义：线性表是具有相同数据类型的n个数据元素的有限序列。 序列：元素之间有序，中间元素都有且仅有一个直接前驱和一个直接后继。 当一个线性表中没有元素(长度为0)时，称为空表；表的起始位置称为表头，表的结束位置称为表尾。 ## 二、顺序表 用连续的存储空间(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。 ### 三、结构定义以及初始化 1234typede">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-30T12:10:27.835Z">
 <meta property="article:modified_time" content="2025-11-30T13:56:30.504Z">
@@ -104,28 +104,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="一、线性表"><a href="#一、线性表" class="headerlink" title="一、线性表"></a>一、线性表</h1><p>定义：线性表是具有<strong>相同数据类型</strong>的n个数据元素的<strong>有限序列</strong>。<br>序列：元素之间有序，中间元素都有且仅有一个<strong>直接前驱</strong>和一个<strong>直接后继</strong>。<br>当一个线性表中没有元素(长度为0)时，称为<strong>空表</strong>；表的起始位置称为<strong>表头</strong>，表的结束位置称为<strong>表尾</strong>。</p>
-<h2 id="二、顺序表"><a href="#二、顺序表" class="headerlink" title="二、顺序表"></a>二、顺序表</h2><p>用<strong>连续的存储空间</strong>(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。</p>
-<h3 id="三、结构定义以及初始化"><a href="#三、结构定义以及初始化" class="headerlink" title="三、结构定义以及初始化"></a>三、结构定义以及初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    Elemtype data[MAXSIZE];</span><br><span class="line">    int length;//当前元素长度</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure>
-<p>注意：<code>initList</code>函数要<strong>传入</strong>一个<code>SeqList</code>类型的<strong>指针</strong><br>实现<strong>对原结构体的修改</strong>，避免拷贝，<strong>节省内存</strong>(后续增删改查操作一致)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void initList(SeqList *L) &#123;</span><br><span class="line">    L-&gt;length=0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="四、顺序表的核心操作-C语言实现"><a href="#四、顺序表的核心操作-C语言实现" class="headerlink" title="四、顺序表的核心操作(C语言实现)"></a>四、顺序表的核心操作(C语言实现)</h4><p>增、删、改、查<br>1.尾部添加元素</p>
-<ul>
-<li>先赋值再<code>length++</code><br>注意：把<code>L-&gt;length</code>当作数组下标<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int appendElem(SeqList* L, ElemType e) &#123;</span><br><span class="line">    L-&gt;data[L-&gt;length] = e;</span><br><span class="line">    L-&gt;length++;</span><br><span class="line">    return 1;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-2.插入元素(指定位置)</li>
-<li>后移元素</li>
-<li>最后记得<code>length++</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int insertElem(SeqList* L, int pos,ElemType e) &#123;</span><br><span class="line">     for (int i = L-&gt;length-1; i &gt;= pos - 1; i--) &#123;</span><br><span class="line">            L-&gt;data[i + 1] = L-&gt;data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;data[pos - 1] = e;</span><br><span class="line">        L-&gt;length++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-3.删除元素(指定位置)</li>
-<li>前移元素</li>
-<li>最后记得<code>length--</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  int deleteElem(SeqList* L, int pos, ElemType* e) &#123;</span><br><span class="line">    *e = L-&gt;data[pos - 1];</span><br><span class="line">    for (int i = pos; i &lt; L-&gt;length;i++)  &#123;</span><br><span class="line">            L-&gt;data[i - 1] = L-&gt;data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;length--;</span><br><span class="line">        return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-4.查找(给定一个参数e，查找第一次出现的位置)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  int findELem(SeqList* L, ElemType e) &#123;</span><br><span class="line">    for (int i = 0; i &lt; L-&gt;length; i++) &#123;</span><br><span class="line">        if (L-&gt;data[i] == e) &#123;</span><br><span class="line">            return i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-5.修改<br> 直接赋值<br>6.遍历<br>  一个<code>for</code>循环遍历</li>
-</ul>
+        <h1 id="一线性表">一、线性表</h1>
+<p>定义：线性表是具有<strong>相同数据类型</strong>的n个数据元素的<strong>有限序列</strong>。
+序列：元素之间有序，中间元素都有且仅有一个<strong>直接前驱</strong>和一个<strong>直接后继</strong>。
+当一个线性表中没有元素(长度为0)时，称为<strong>空表</strong>；表的起始位置称为<strong>表头</strong>，表的结束位置称为<strong>表尾</strong>。
+## 二、顺序表
+用<strong>连续的存储空间</strong>(如数组)存储元素，支持随机访问(通过下标快速定位并访问随机元素)。
+### 三、结构定义以及初始化 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    Elemtype data[MAXSIZE];</span><br><span class="line">    int length;//当前元素长度</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure>
+注意：<code>initList</code>函数要<strong>传入</strong>一个<code>SeqList</code>类型的<strong>指针</strong>
+实现<strong>对原结构体的修改</strong>，避免拷贝，<strong>节省内存</strong>(后续增删改查操作一致)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void initList(SeqList *L) &#123;</span><br><span class="line">    L-&gt;length=0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> #### 四、顺序表的核心操作(C语言实现) 增、删、改、查
+1.尾部添加元素 - 先赋值再<code>length++</code>
+注意：把<code>L-&gt;length</code>当作数组下标 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int appendElem(SeqList* L, ElemType e) &#123;</span><br><span class="line">    L-&gt;data[L-&gt;length] = e;</span><br><span class="line">    L-&gt;length++;</span><br><span class="line">    return 1;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+2.插入元素(指定位置) - 后移元素 - 最后记得<code>length++</code>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int insertElem(SeqList* L, int pos,ElemType e) &#123;</span><br><span class="line">     for (int i = L-&gt;length-1; i &gt;= pos - 1; i--) &#123;</span><br><span class="line">            L-&gt;data[i + 1] = L-&gt;data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;data[pos - 1] = e;</span><br><span class="line">        L-&gt;length++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 3.删除元素(指定位置) - 前移元素 -
+最后记得<code>length--</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  int deleteElem(SeqList* L, int pos, ElemType* e) &#123;</span><br><span class="line">    *e = L-&gt;data[pos - 1];</span><br><span class="line">    for (int i = pos; i &lt; L-&gt;length;i++)  &#123;</span><br><span class="line">            L-&gt;data[i - 1] = L-&gt;data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        L-&gt;length--;</span><br><span class="line">        return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+4.查找(给定一个参数e，查找第一次出现的位置) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  int findELem(SeqList* L, ElemType e) &#123;</span><br><span class="line">    for (int i = 0; i &lt; L-&gt;length; i++) &#123;</span><br><span class="line">        if (L-&gt;data[i] == e) &#123;</span><br><span class="line">            return i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 5.修改
+直接赋值 6.遍历 一个<code>for</code>循环遍历</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iyxyx.github.io/2025/11/30/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%AC%94%E8%AE%B0/" data-id="cmivryc2o000aakvb9axhcaa2" data-title="线性表(顺序表)笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://iyxyx.github.io/2025/11/30/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%AC%94%E8%AE%B0/" data-id="cmix1ewtr00029cvbdbe0cc5x" data-title="线性表(顺序表)笔记" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       

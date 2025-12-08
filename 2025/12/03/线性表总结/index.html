@@ -6,12 +6,12 @@
   
   <title>线性表总结 | iyxyx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="线性表定义：线性表是n个具有相同数据类型数据元素的有限序列。 顺序表 用连续的存储单元依次存储数据元素 逻辑上相邻的元素物理上也相邻 下标便于随机访问，时间复杂度为O(1)12345&#x2F;&#x2F;顺序表结构体typedef struct &#123;    ElemType data[MAXSIZE]; &#x2F;&#x2F;用数组存储    int length; &#x2F;&#x2F;当前长度，作为数组下标&#125;SeqList;">
+  <meta name="description" content="线性表 定义：线性表是n个具有相同数据类型数据元素的有限序列。 ## 顺序表 - 用连续的存储单元依次存储数据元素 - 逻辑上相邻的元素物理上也相邻 - 下标便于随机访问，时间复杂度为O(1) 12345&#x2F;&#x2F;顺序表结构体typedef struct &#123;    ElemType data[MAXSIZE]; &#x2F;&#x2F;用数组存储    int length; &#x2F;&#x2F;当前长度，作为数组下标&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性表总结">
 <meta property="og:url" content="https://iyxyx.github.io/2025/12/03/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="iyxyx的博客">
-<meta property="og:description" content="线性表定义：线性表是n个具有相同数据类型数据元素的有限序列。 顺序表 用连续的存储单元依次存储数据元素 逻辑上相邻的元素物理上也相邻 下标便于随机访问，时间复杂度为O(1)12345&#x2F;&#x2F;顺序表结构体typedef struct &#123;    ElemType data[MAXSIZE]; &#x2F;&#x2F;用数组存储    int length; &#x2F;&#x2F;当前长度，作为数组下标&#125;SeqList;">
+<meta property="og:description" content="线性表 定义：线性表是n个具有相同数据类型数据元素的有限序列。 ## 顺序表 - 用连续的存储单元依次存储数据元素 - 逻辑上相邻的元素物理上也相邻 - 下标便于随机访问，时间复杂度为O(1) 12345&#x2F;&#x2F;顺序表结构体typedef struct &#123;    ElemType data[MAXSIZE]; &#x2F;&#x2F;用数组存储    int length; &#x2F;&#x2F;当前长度，作为数组下标&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-03T13:36:49.190Z">
 <meta property="article:modified_time" content="2025-12-03T15:16:04.889Z">
@@ -104,89 +104,40 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>定义：线性表是n个具有<strong>相同数据类型</strong>数据元素的<strong>有限序列</strong>。</p>
-<h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><ul>
-<li>用<strong>连续的存储单元</strong>依次存储数据元素</li>
-<li>逻辑上相邻的元素物理上也相邻</li>
-<li>下标便于随机访问，时间复杂度为O(1)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//顺序表结构体</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    ElemType data[MAXSIZE]; //用数组存储</span><br><span class="line">    int length; //当前长度，作为数组下标</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
-<li>用<strong>任意存储单元</strong>存储数据元素</li>
-<li>通过指针链接逻辑上相邻元素</li>
-<li>不支持随机访问，每次查找都需要遍历<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//单链表结构体</span><br><span class="line">typedef struct node &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct node* next;</span><br><span class="line">&#125;Node;</span><br><span class="line">//双链表结构体</span><br><span class="line">typedef struct node &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct node* next, * prev;</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><ul>
-<li><strong>后进先出</strong>的<strong>线性表</strong></li>
-<li>只允许在一端（栈顶<code>top</code>）进行插入和删除操作<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//栈结构体-顺序存储结构</span><br><span class="line">typedef struct stack &#123;</span><br><span class="line">    Elemtype data[MAXSIZE];</span><br><span class="line">	int top; //把top当作下标</span><br><span class="line">&#125;Stack;</span><br><span class="line">//链式存储结构</span><br><span class="line">typedef struct stack &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct stack *next;</span><br><span class="line">&#125;Stack;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h5><ul>
-<li><strong>先进先出</strong>的<strong>线性表</strong></li>
-<li>只允许在队尾<code>rear</code>插入，队首<code>front</code>删除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//队列结构体-顺序存储结构</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	Elemtype data[MAXSIZE];</span><br><span class="line">	int front; //当成数组下标</span><br><span class="line">	int rear; //当成数组下标</span><br><span class="line">&#125;Queue;</span><br><span class="line">//链式存储结构</span><br><span class="line">typedef struct QueueNode &#123;</span><br><span class="line">	Elemtype data; //链表data域</span><br><span class="line">	struct QueueNode* next; //链表next域</span><br><span class="line">&#125;QueueNode;</span><br><span class="line">//声明两个节点类型指针分别指向队头和队尾</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	QueueNode* front;</span><br><span class="line">	QueueNode* rear;</span><br><span class="line">&#125;Queue;</span><br></pre></td></tr></table></figure>
-循环队列</li>
-<li>取模操作 每次移动队尾、队头指针都要通过取模运算</li>
-<li>判断队列满了<code>(Q-&gt;rear + 1) % MAXSIZE == Q-&gt;front</code></li>
-<li>队头、队尾指针移动<code>Q-&gt;rear = (Q-&gt;rear + 1) % MAXSIZE</code></li>
-</ul>
-<h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><p>1.时间复杂度</p>
-<table>
-<thead>
-<tr>
-<th align="left">操作</th>
-<th align="left">顺序表</th>
-<th align="left">链表</th>
-<th align="left">栈</th>
-<th align="left">队列</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">访问元素</td>
-<td align="left">O(1)</td>
-<td align="left">O(n)</td>
-<td align="left">O(1)</td>
-<td align="left">O(1)</td>
-</tr>
-<tr>
-<td align="left">插入&#x2F;删除</td>
-<td align="left">O(n)</td>
-<td align="left">O(1)</td>
-<td align="left">O(1)</td>
-<td align="left">O(1)</td>
-</tr>
-<tr>
-<td align="left">查找元素</td>
-<td align="left">O(n)</td>
-<td align="left">O(n)</td>
-<td align="left">O(n)</td>
-<td align="left">O(n)</td>
-</tr>
-</tbody></table>
-<p>2.空间复杂度</p>
-<ul>
-<li>顺序表：空间固定，可能浪费或不足</li>
-<li>链表：动态分配，更灵活但有指针开销</li>
-<li>栈&#x2F;队列：根据实现方式决定（顺序&#x2F;链式）</li>
-</ul>
-<p>3.选择建议</p>
-<ul>
-<li>需要快速随机访问 → 顺序表</li>
-<li>需要频繁插入删除 → 链表</li>
-<li>需要后进先出特性 → 栈</li>
-<li>需要先进先出特性 → 队列</li>
-<li>不确定数据量 → 链表</li>
-<li>数据量固定 → 顺序表</li>
-</ul>
-<p>4.应用场景</p>
-<ol>
-<li>顺序表适用场景：<br>· 数据量固定或变化不大<br>· 需要频繁随机访问元素<br>· 内存空间要求连续</li>
-<li>链表适用场景：<br>· 数据量变化频繁<br>· 频繁在任意位置插入&#x2F;删除<br>· 内存空间不连续</li>
-<li>栈适用场景：<br>· 函数调用栈<br>· 表达式求值<br>· 括号匹配<br>· 浏览器的前进后退</li>
-<li>队列适用场景：<br>· 任务调度<br>· 消息队列<br>· 广度优先搜索<br>· 缓冲区管理</li>
-</ol>
+        <h1 id="线性表">线性表</h1>
+<p>定义：线性表是n个具有<strong>相同数据类型</strong>数据元素的<strong>有限序列</strong>。
+## 顺序表 - 用<strong>连续的存储单元</strong>依次存储数据元素 -
+逻辑上相邻的元素物理上也相邻 - 下标便于随机访问，时间复杂度为O(1)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//顺序表结构体</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    ElemType data[MAXSIZE]; //用数组存储</span><br><span class="line">    int length; //当前长度，作为数组下标</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure> ### 链表 - 用<strong>任意存储单元</strong>存储数据元素 -
+通过指针链接逻辑上相邻元素 - 不支持随机访问，每次查找都需要遍历
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//单链表结构体</span><br><span class="line">typedef struct node &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct node* next;</span><br><span class="line">&#125;Node;</span><br><span class="line">//双链表结构体</span><br><span class="line">typedef struct node &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct node* next, * prev;</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure> #### 栈 -
+<strong>后进先出</strong>的<strong>线性表</strong> -
+只允许在一端（栈顶<code>top</code>）进行插入和删除操作 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//栈结构体-顺序存储结构</span><br><span class="line">typedef struct stack &#123;</span><br><span class="line">    Elemtype data[MAXSIZE];</span><br><span class="line">	int top; //把top当作下标</span><br><span class="line">&#125;Stack;</span><br><span class="line">//链式存储结构</span><br><span class="line">typedef struct stack &#123;</span><br><span class="line">	Elemtype data;</span><br><span class="line">	struct stack *next;</span><br><span class="line">&#125;Stack;</span><br></pre></td></tr></table></figure>
+##### 队列 - <strong>先进先出</strong>的<strong>线性表</strong> -
+只允许在队尾<code>rear</code>插入，队首<code>front</code>删除
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//队列结构体-顺序存储结构</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	Elemtype data[MAXSIZE];</span><br><span class="line">	int front; //当成数组下标</span><br><span class="line">	int rear; //当成数组下标</span><br><span class="line">&#125;Queue;</span><br><span class="line">//链式存储结构</span><br><span class="line">typedef struct QueueNode &#123;</span><br><span class="line">	Elemtype data; //链表data域</span><br><span class="line">	struct QueueNode* next; //链表next域</span><br><span class="line">&#125;QueueNode;</span><br><span class="line">//声明两个节点类型指针分别指向队头和队尾</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	QueueNode* front;</span><br><span class="line">	QueueNode* rear;</span><br><span class="line">&#125;Queue;</span><br></pre></td></tr></table></figure> 循环队列 - 取模操作 每次移动队尾、队头指针都要通过取模运算
+- 判断队列满了<code>(Q-&gt;rear + 1) % MAXSIZE == Q-&gt;front</code> -
+队头、队尾指针移动<code>Q-&gt;rear = (Q-&gt;rear + 1) % MAXSIZE</code>
+###### 总结 1.时间复杂度 | 操作 | 顺序表 | 链表 | 栈 | 队列 | | :——— |
+:—– | :—– | :—– | :—– | | 访问元素 | O(1) | O(n) | O(1) | O(1) | |
+插入/删除 | O(n) | O(1) | O(1) | O(1) | | 查找元素 | O(n) | O(n) | O(n)
+| O(n) |</p>
+<p>2.空间复杂度 - 顺序表：空间固定，可能浪费或不足 -
+链表：动态分配，更灵活但有指针开销 -
+栈/队列：根据实现方式决定（顺序/链式）</p>
+<p>3.选择建议 - 需要快速随机访问 → 顺序表 - 需要频繁插入删除 → 链表 -
+需要后进先出特性 → 栈 - 需要先进先出特性 → 队列 - 不确定数据量 → 链表 -
+数据量固定 → 顺序表</p>
+<p>4.应用场景 1. 顺序表适用场景： · 数据量固定或变化不大 ·
+需要频繁随机访问元素 · 内存空间要求连续 2. 链表适用场景： ·
+数据量变化频繁 · 频繁在任意位置插入/删除 · 内存空间不连续 3.
+栈适用场景： · 函数调用栈 · 表达式求值 · 括号匹配 · 浏览器的前进后退 4.
+队列适用场景： · 任务调度 · 消息队列 · 广度优先搜索 · 缓冲区管理</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://iyxyx.github.io/2025/12/03/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%80%BB%E7%BB%93/" data-id="cmivryc2o000bakvb6unn4ero" data-title="线性表总结" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://iyxyx.github.io/2025/12/03/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%80%BB%E7%BB%93/" data-id="cmix1ewty00079cvbbuir7f1i" data-title="线性表总结" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
